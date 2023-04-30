@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">FountainPenCollection</string>
+    <string name="text_username">Username</string>
+    <string name="text_Password">Password</string>
+    <string name="buttion_login">LOGIN</string>
+    <string name="loginFail">Sorry your credentials are incorrect please try again.</string>
+
+    <string name="AccountSTextView">Account settings</string>
+    <string name="AppStTextView">App setting</string>
+    <string name="FavorteLOPTextView">Favorite pens</string>
+    <string name="SortingTextView">Sorting</string>
+    <string name="ClearSort">Sort Clear</string>
+</resources>

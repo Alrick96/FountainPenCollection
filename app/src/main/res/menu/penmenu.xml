@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/AccountSettingMenu"
+        android:title="@string/AccountSTextView" />
+    <item
+        android:id="@+id/AppSettingMenu"
+        android:title="@string/AppStTextView" />
+    <item
+        android:id="@+id/FavoritePensMenu"
+        android:title="@string/FavorteLOPTextView" />
+    <item
+        android:id="@+id/SortingMenu"
+        android:title="@string/SortingTextView" />
+    <item
+        android:id="@+id/ClearSortMenu"
+        android:title="@string/ClearSort" />
+</menu>
