@@ -60,4 +60,14 @@
         app:layout_constraintStart_toEndOf="@+id/CompanyNameTextView"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/penicon" />
+
+    <Button
+        android:id="@+id/ViewPenButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/ViewPenButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/PenYearTextView" />
 </androidx.constraintlayout.widget.ConstraintLayout>

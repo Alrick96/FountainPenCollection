@@ -10,4 +10,11 @@
     <string name="FavorteLOPTextView">Favorite pens</string>
     <string name="SortingTextView">Sorting</string>
     <string name="ClearSort">Sort Clear</string>
+    <string name="ViewPenButton">View Pen</string>
+
+    <string name="PenSortButtion">Pen Name</string>
+    <string name="CompanySortButtion">Company Name</string>
+    <string name="YearSortButtion">Year</string>
+    <string name="RatingSortButtion">Rating</string>
+    <string name="SortbyTextView">Sort by</string>
 </resources>

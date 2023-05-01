@@ -12,6 +12,9 @@
         android:theme="@style/Theme.FountainPenCollection"
         tools:targetApi="31">
         <activity
+            android:name=".PenViewData"
+            android:exported="false" />
+        <activity
             android:name=".SortingPensMenu"
             android:exported="false" />
         <activity

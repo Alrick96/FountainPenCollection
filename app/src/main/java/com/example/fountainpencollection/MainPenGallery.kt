@@ -44,8 +44,10 @@ class MainPenGallery : AppCompatActivity() {
         editor.putFloat("CompanyNameSort",0f)
         editor.putFloat("YearSort",0f)
         editor.putFloat("RatingSort",0f)
+        editor.putFloat("Fav",0f)
         editor.apply()
     }
+
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inflater = menuInflater
@@ -66,8 +68,14 @@ class MainPenGallery : AppCompatActivity() {
                 true
             }
             R.id.FavoritePensMenu->{
-                val i = Intent(this@MainPenGallery,FavoritePensMenu::class.java)
-                startActivity(i)
+                //val i = Intent(this@MainPenGallery,FavoritePensMenu::class.java)
+                //startActivity(i)
+                val context: Context = this@MainPenGallery
+                val sp = PreferenceManager.getDefaultSharedPreferences(context)
+                val editor = sp.edit()
+                editor.putFloat("Fav",1f)
+                editor.apply()
+                onResume()
                 true
             }
             R.id.SortingMenu->{
@@ -85,6 +93,7 @@ class MainPenGallery : AppCompatActivity() {
                 editor.putFloat("RatingSort",0f)
 
                 editor.apply()
+                recreate()
                 true
             }
             else -> super.onOptionsItemSelected(item)
@@ -96,16 +105,26 @@ class MainPenGallery : AppCompatActivity() {
         loadFromdb()
     }
 
-    fun loadFromdb(){
+    fun loadFromdb() {
         PenData.clear()
-
-
         val sp = PreferenceManager.getDefaultSharedPreferences(this@MainPenGallery)
-        //val filterState = sp.getFloat("filterState",0f)
+        val FavState = sp.getFloat("Fav", 0f)
+
+        //calling the sorts
+        val penNameSort = sp.getFloat("PenNameSort", 0f)
+        val CompanyNameSort = sp.getFloat("CompanyNameSort", 0f)
+        val YearSort = sp.getFloat("YearSort", 0f)
+        val RatingSort = sp.getFloat("RatingSort", 0f)
         //val filterData= sp.getFloat("filterData",0.0f)
 
-        db.collection("FountainPens").get()
-            .addOnSuccessListener { result ->
+        //calling the database
+        val PensDB = db.collection("FountainPens")
+
+
+        //sorting list
+        if (penNameSort != 0f) {
+
+            PensDB.orderBy("PenName").get().addOnSuccessListener { result ->
                 for (document in result) {
                     // setting the data from the doc
 
@@ -120,29 +139,280 @@ class MainPenGallery : AppCompatActivity() {
                     var PenYear = tmp2.toString()
 
                     var FSData =
-                        Pens(PenName.toString(),CompanyName.toString(), PenYear.toDouble(),"0",rating.toDouble()
-                        ,"","","","","",0.0,0.0,0.0,0.0
-                        ,0.0,0.0,0.0,0.0,0.0,0.0,0.0,
-                            0.0,Fav2.toBoolean())
-                    //Log.d("MYDeBUG",name.toString())
-                    //Log.d("ReturantNamedata", FSData.getName())
-                    //Log.d("ReturantRatingData", FSData.getRating().toString())
-                    //Log.d("ReturantNamedata", FSData.getLocation())
-                    /*if (filterState != 0f) {
-                        if(filterData <=  rating.toDouble()){
-                            RestaurantData.add(FSData)
+                        Pens(
+                            PenName.toString(),
+                            CompanyName.toString(),
+                            PenYear.toDouble(),
+                            "0",
+                            rating.toDouble(),
+                            "",
+                            "",
+                            "",
+                            "",
+                            "",
+                            0.0,
+                            0.0,
+                            0.0,
+                            0.0,
+                            0.0,
+                            0.0,
+                            0.0,
+                            0.0,
+                            0.0,
+                            0.0,
+                            0.0,
+                            0.0,
+                            Fav2.toBoolean()
+                        )
+
+                    if (FavState != 0f) {
+                        if (Fav2.toBoolean()) {
+                            PenData.add(FSData)
                         }
+                    } else {
+                        PenData.add(FSData)
                     }
-                    else{
-                        RestaurantData.add(FSData)
-                    }
-                    */
-                     PenData.add(FSData)
+
+                    //PenData.add(FSData)
                     Log.d("MYDEBUG", "${document.id} => ${document.getString("name")}")
                     //RestaurantAdapter = RestaurantAdapter(RestaurantData)
                 }
                 // the adapter for the recycler view
                 PenAdapter.notifyDataSetChanged()
             }
+        }
+        else if (CompanyNameSort != 0f) {
+            PensDB.orderBy("CompanyName").get().addOnSuccessListener { result ->
+                for (document in result) {
+                    // setting the data from the doc
+
+                    var PenName = document.getString("PenName")
+                    var CompanyName = document.getString("CompanyName")
+                    var tmp2 = document.getDouble("PenYear")
+                    var tmp1 = document.getDouble("Rating")
+                    var Fav = document.getBoolean("Fav")
+                    var Fav2 = Fav.toString()
+
+                    var rating = tmp1.toString()
+                    var PenYear = tmp2.toString()
+
+                    var FSData =
+                        Pens(
+                            PenName.toString(),
+                            CompanyName.toString(),
+                            PenYear.toDouble(),
+                            "0",
+                            rating.toDouble(),
+                            "",
+                            "",
+                            "",
+                            "",
+                            "",
+                            0.0,
+                            0.0,
+                            0.0,
+                            0.0,
+                            0.0,
+                            0.0,
+                            0.0,
+                            0.0,
+                            0.0,
+                            0.0,
+                            0.0,
+                            0.0,
+                            Fav2.toBoolean()
+                        )
+
+                    if (FavState != 0f) {
+                        if (Fav2.toBoolean()) {
+                            PenData.add(FSData)
+                        }
+                    } else {
+                        PenData.add(FSData)
+                    }
+
+                    //PenData.add(FSData)
+                    Log.d("MYDEBUG", "${document.id} => ${document.getString("name")}")
+                    //RestaurantAdapter = RestaurantAdapter(RestaurantData)
+                }
+                // the adapter for the recycler view
+                PenAdapter.notifyDataSetChanged()
+            }
+        }
+        else if (YearSort != 0f) {
+            PensDB.orderBy("PenYear").get().addOnSuccessListener { result ->
+                for (document in result) {
+                    // setting the data from the doc
+
+                    var PenName = document.getString("PenName")
+                    var CompanyName = document.getString("CompanyName")
+                    var tmp2 = document.getDouble("PenYear")
+                    var tmp1 = document.getDouble("Rating")
+                    var Fav = document.getBoolean("Fav")
+                    var Fav2 = Fav.toString()
+
+                    var rating = tmp1.toString()
+                    var PenYear = tmp2.toString()
+
+                    var FSData =
+                        Pens(
+                            PenName.toString(),
+                            CompanyName.toString(),
+                            PenYear.toDouble(),
+                            "0",
+                            rating.toDouble(),
+                            "",
+                            "",
+                            "",
+                            "",
+                            "",
+                            0.0,
+                            0.0,
+                            0.0,
+                            0.0,
+                            0.0,
+                            0.0,
+                            0.0,
+                            0.0,
+                            0.0,
+                            0.0,
+                            0.0,
+                            0.0,
+                            Fav2.toBoolean()
+                        )
+
+                    if (FavState != 0f) {
+                        if (Fav2.toBoolean()) {
+                            PenData.add(FSData)
+                        }
+                    } else {
+                        PenData.add(FSData)
+                    }
+
+                    //PenData.add(FSData)
+                    Log.d("MYDEBUG", "${document.id} => ${document.getString("name")}")
+                    //RestaurantAdapter = RestaurantAdapter(RestaurantData)
+                }
+                // the adapter for the recycler view
+                PenAdapter.notifyDataSetChanged()
+            }
+        } else if (RatingSort != 0f) {
+            PensDB.orderBy("Rating").get().addOnSuccessListener { result ->
+                for (document in result) {
+                    // setting the data from the doc
+
+                    var PenName = document.getString("PenName")
+                    var CompanyName = document.getString("CompanyName")
+                    var tmp2 = document.getDouble("PenYear")
+                    var tmp1 = document.getDouble("Rating")
+                    var Fav = document.getBoolean("Fav")
+                    var Fav2 = Fav.toString()
+
+                    var rating = tmp1.toString()
+                    var PenYear = tmp2.toString()
+
+                    var FSData =
+                        Pens(
+                            PenName.toString(),
+                            CompanyName.toString(),
+                            PenYear.toDouble(),
+                            "0",
+                            rating.toDouble(),
+                            "",
+                            "",
+                            "",
+                            "",
+                            "",
+                            0.0,
+                            0.0,
+                            0.0,
+                            0.0,
+                            0.0,
+                            0.0,
+                            0.0,
+                            0.0,
+                            0.0,
+                            0.0,
+                            0.0,
+                            0.0,
+                            Fav2.toBoolean()
+                        )
+
+                    if (FavState != 0f) {
+                        if (Fav2.toBoolean()) {
+                            PenData.add(FSData)
+                        }
+                    } else {
+                        PenData.add(FSData)
+                    }
+
+                    //PenData.add(FSData)
+                    Log.d("MYDEBUG", "${document.id} => ${document.getString("name")}")
+                    //RestaurantAdapter = RestaurantAdapter(RestaurantData)
+                }
+                // the adapter for the recycler view
+                PenAdapter.notifyDataSetChanged()
+            }
+        }
+        else {
+            PensDB.get()
+                .addOnSuccessListener { result ->
+                    for (document in result) {
+                        // setting the data from the doc
+
+                        var PenName = document.getString("PenName")
+                        var CompanyName = document.getString("CompanyName")
+                        var tmp2 = document.getDouble("PenYear")
+                        var tmp1 = document.getDouble("Rating")
+                        var Fav = document.getBoolean("Fav")
+                        var Fav2 = Fav.toString()
+
+                        var rating = tmp1.toString()
+                        var PenYear = tmp2.toString()
+
+                        var FSData =
+                            Pens(
+                                PenName.toString(),
+                                CompanyName.toString(),
+                                PenYear.toDouble(),
+                                "0",
+                                rating.toDouble(),
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                0.0,
+                                0.0,
+                                0.0,
+                                0.0,
+                                0.0,
+                                0.0,
+                                0.0,
+                                0.0,
+                                0.0,
+                                0.0,
+                                0.0,
+                                0.0,
+                                Fav2.toBoolean()
+                            )
+
+                        if (FavState != 0f) {
+                            if (Fav2.toBoolean()) {
+                                PenData.add(FSData)
+                            }
+                        } else {
+                            PenData.add(FSData)
+                        }
+
+                        //PenData.add(FSData)
+                        Log.d("MYDEBUG", "${document.id} => ${document.getString("name")}")
+                        //RestaurantAdapter = RestaurantAdapter(RestaurantData)
+                    }
+                    // the adapter for the recycler view
+                    PenAdapter.notifyDataSetChanged()
+                }
+        }
     }
+
 }
