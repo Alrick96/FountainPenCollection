@@ -15,26 +15,42 @@ import kotlin.math.log
 
 class PenAdapter (private var PenList:List<Pens>)
     : RecyclerView.Adapter<PenAdapter.PenViewHolder>(){
-    lateinit var PenInterface1:PenInterface
-        inner class PenViewHolder (itemView: View):RecyclerView.ViewHolder(itemView)
-        {
+
+    private lateinit var listener: PenNameAdapterLisener
+
+    inner class PenViewHolder (itemView: View):RecyclerView.ViewHolder(itemView)
+    {
             val PenNameTextView: TextView = itemView.findViewById(R.id.PenNameTextView)
             val CompanyNameTextView: TextView = itemView.findViewById(R.id.CompanyNameTextView)
             val PenYearTextView: TextView = itemView.findViewById(R.id.PenYearTextView)
             val PenRating: RatingBar = itemView.findViewById(R.id.PenRatingBar)
             val ViewPenButton = itemView.findViewById(R.id.ViewPenButton) as Button
 
-
-
             val context = this@PenAdapter
 
+        init {
+            itemView.setOnClickListener {
+                if (listener != null) {
+                    var position = adapterPosition
+                    if (position != RecyclerView.NO_POSITION) {
+                        listener.onClick(position)
+                    }
+                }
+            } // end setOnClickListener
+        } // end init
 
         // need to implement all them
-        }
+    }
+    fun setOnItemClickListener(_lisener: PenNameAdapterLisener)
+    {
+        listener=_lisener
+    }
     fun setData(List1: List<Pens>){
         PenList = List1
 
         notifyDataSetChanged()
+
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PenViewHolder {
@@ -62,11 +78,11 @@ class PenAdapter (private var PenList:List<Pens>)
         holder.PenRating.rating = PenRating
 
         holder.ViewPenButton.setOnClickListener {
-            var message = "Buttion for " + PenList[position].getName() + " was pressed"
-            Log.d("TonyTest",message)
-
-            PenInterface1.onPenDataCallsend(PenName)
 
         }
+    }
+
+    interface PenNameAdapterLisener{
+        fun onClick(position: Int)
     }
 }

@@ -17,7 +17,6 @@ import org.checkerframework.common.returnsreceiver.qual.This
 class MainPenGallery : AppCompatActivity() {
 
     private lateinit var PenRecyclerView: RecyclerView
-    private lateinit var PenInterface:PenInterface
     private lateinit var PenData:ArrayList<Pens>
     private lateinit var PenAdapter: PenAdapter
 
@@ -104,6 +103,17 @@ class MainPenGallery : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         loadFromdb()
+
+        /*
+        PenAdapter = PenAdapter(PenData)
+        //data from the recylerview
+        PenAdapter.setOnItemClickListener(object: PenAdapter.PenNameAdapterLisener {
+            override fun onClick(position: Int) {
+                var name = PenData[position]
+                Log.d("ARTHUR_DEBUG", "selected = " + name)
+            }
+        })
+        */
     }
 
     fun loadFromdb() {
@@ -409,9 +419,16 @@ class MainPenGallery : AppCompatActivity() {
                         //PenData.add(FSData)
                         Log.d("MYDEBUG", "${document.id} => ${document.getString("name")}")
                         //RestaurantAdapter = RestaurantAdapter(RestaurantData)
+                        PenAdapter.setOnItemClickListener(object: PenAdapter.PenNameAdapterLisener {
+                            override fun onClick(position: Int) {
+                                var name = PenData[position]
+                                Log.d("ARTHUR_DEBUG", "selected = " + name)
+                            }
+                        })
                     }
                     // the adapter for the recycler view
                     PenAdapter.notifyDataSetChanged()
+
                 }
         }
     }
