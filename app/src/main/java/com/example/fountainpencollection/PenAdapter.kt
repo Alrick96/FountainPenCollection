@@ -2,6 +2,7 @@ package com.example.fountainpencollection
 
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,9 +11,11 @@ import android.widget.RatingBar
 import android.widget.TextView
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
+import kotlin.math.log
 
-class PenAdapter(private var PenList:List<Pens>)
-    : RecyclerView.Adapter<PenAdapter.PenViewHolder>() {
+class PenAdapter (private var PenList:List<Pens>)
+    : RecyclerView.Adapter<PenAdapter.PenViewHolder>(){
+    lateinit var PenInterface1:PenInterface
         inner class PenViewHolder (itemView: View):RecyclerView.ViewHolder(itemView)
         {
             val PenNameTextView: TextView = itemView.findViewById(R.id.PenNameTextView)
@@ -21,10 +24,13 @@ class PenAdapter(private var PenList:List<Pens>)
             val PenRating: RatingBar = itemView.findViewById(R.id.PenRatingBar)
             val ViewPenButton = itemView.findViewById(R.id.ViewPenButton) as Button
 
+
+
+            val context = this@PenAdapter
+
+
         // need to implement all them
         }
-
-
     fun setData(List1: List<Pens>){
         PenList = List1
 
@@ -49,12 +55,18 @@ class PenAdapter(private var PenList:List<Pens>)
         val PenYear = PenList[position].getPenYear()
         val PenRating = PenList[position].getRating().toFloat()
 
+
         holder.PenNameTextView.text = PenName
         holder.CompanyNameTextView.text = CompanyName
         holder.PenYearTextView.text = PenYear.toString()
         holder.PenRating.rating = PenRating
 
+        holder.ViewPenButton.setOnClickListener {
+            var message = "Buttion for " + PenList[position].getName() + " was pressed"
+            Log.d("TonyTest",message)
 
+            PenInterface1.onPenDataCallsend(PenName)
+
+        }
     }
-
 }

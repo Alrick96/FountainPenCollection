@@ -17,6 +17,7 @@ import org.checkerframework.common.returnsreceiver.qual.This
 class MainPenGallery : AppCompatActivity() {
 
     private lateinit var PenRecyclerView: RecyclerView
+    private lateinit var PenInterface:PenInterface
     private lateinit var PenData:ArrayList<Pens>
     private lateinit var PenAdapter: PenAdapter
 
@@ -414,5 +415,6 @@ class MainPenGallery : AppCompatActivity() {
                 }
         }
     }
+
 
 }
