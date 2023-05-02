@@ -103,17 +103,6 @@ class MainPenGallery : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         loadFromdb()
-
-        /*
-        PenAdapter = PenAdapter(PenData)
-        //data from the recylerview
-        PenAdapter.setOnItemClickListener(object: PenAdapter.PenNameAdapterLisener {
-            override fun onClick(position: Int) {
-                var name = PenData[position]
-                Log.d("ARTHUR_DEBUG", "selected = " + name)
-            }
-        })
-        */
     }
 
     fun loadFromdb() {
@@ -187,6 +176,7 @@ class MainPenGallery : AppCompatActivity() {
                     //PenData.add(FSData)
                     Log.d("MYDEBUG", "${document.id} => ${document.getString("name")}")
                     //RestaurantAdapter = RestaurantAdapter(RestaurantData)
+                    penbutton()
                 }
                 // the adapter for the recycler view
                 PenAdapter.notifyDataSetChanged()
@@ -245,6 +235,7 @@ class MainPenGallery : AppCompatActivity() {
                     //PenData.add(FSData)
                     Log.d("MYDEBUG", "${document.id} => ${document.getString("name")}")
                     //RestaurantAdapter = RestaurantAdapter(RestaurantData)
+                    penbutton()
                 }
                 // the adapter for the recycler view
                 PenAdapter.notifyDataSetChanged()
@@ -303,11 +294,13 @@ class MainPenGallery : AppCompatActivity() {
                     //PenData.add(FSData)
                     Log.d("MYDEBUG", "${document.id} => ${document.getString("name")}")
                     //RestaurantAdapter = RestaurantAdapter(RestaurantData)
+                    penbutton()
                 }
                 // the adapter for the recycler view
                 PenAdapter.notifyDataSetChanged()
             }
-        } else if (RatingSort != 0f) {
+        }
+        else if (RatingSort != 0f) {
             PensDB.orderBy("Rating").get().addOnSuccessListener { result ->
                 for (document in result) {
                     // setting the data from the doc
@@ -360,6 +353,7 @@ class MainPenGallery : AppCompatActivity() {
                     //PenData.add(FSData)
                     Log.d("MYDEBUG", "${document.id} => ${document.getString("name")}")
                     //RestaurantAdapter = RestaurantAdapter(RestaurantData)
+                    penbutton()
                 }
                 // the adapter for the recycler view
                 PenAdapter.notifyDataSetChanged()
@@ -419,18 +413,36 @@ class MainPenGallery : AppCompatActivity() {
                         //PenData.add(FSData)
                         Log.d("MYDEBUG", "${document.id} => ${document.getString("name")}")
                         //RestaurantAdapter = RestaurantAdapter(RestaurantData)
-                        PenAdapter.setOnItemClickListener(object: PenAdapter.PenNameAdapterLisener {
-                            override fun onClick(position: Int) {
-                                var name = PenData[position]
-                                Log.d("ARTHUR_DEBUG", "selected = " + name)
-                            }
-                        })
+
+                        penbutton()
+
                     }
                     // the adapter for the recycler view
                     PenAdapter.notifyDataSetChanged()
 
                 }
         }
+    }
+
+
+
+    fun penbutton(){
+        PenAdapter.setOnItemClickListener(object: PenAdapter.PenNameAdapterLisener {
+            override fun onClick(position: Int) {
+                var name = PenData[position].getName()
+                val i = Intent(this@MainPenGallery, PenViewData::class.java)
+                startActivity(i)
+                Log.d("ARTHUR_DEBUG", "selected = " + name)
+
+                //pen that was selected
+                val context: Context = this@MainPenGallery
+                val sp = PreferenceManager.getDefaultSharedPreferences(context)
+                val editor = sp.edit()
+                editor.putString("PenNameSelected",name)
+
+                editor.apply()
+            }
+        })
     }
 
 

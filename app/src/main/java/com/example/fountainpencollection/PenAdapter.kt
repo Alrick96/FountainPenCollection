@@ -24,8 +24,6 @@ class PenAdapter (private var PenList:List<Pens>)
             val CompanyNameTextView: TextView = itemView.findViewById(R.id.CompanyNameTextView)
             val PenYearTextView: TextView = itemView.findViewById(R.id.PenYearTextView)
             val PenRating: RatingBar = itemView.findViewById(R.id.PenRatingBar)
-            val ViewPenButton = itemView.findViewById(R.id.ViewPenButton) as Button
-
             val context = this@PenAdapter
 
         init {
@@ -77,9 +75,7 @@ class PenAdapter (private var PenList:List<Pens>)
         holder.PenYearTextView.text = PenYear.toString()
         holder.PenRating.rating = PenRating
 
-        holder.ViewPenButton.setOnClickListener {
 
-        }
     }
 
     interface PenNameAdapterLisener{
