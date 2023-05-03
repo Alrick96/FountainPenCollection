@@ -18,4 +18,5 @@
     <string name="RatingSortButtion">Rating</string>
     <string name="SortbyTextView">Sort by</string>
     <string name="PenNameDTextView">Pen Name</string>
+    <string name="NewPassord">New Password</string>
 </resources>
