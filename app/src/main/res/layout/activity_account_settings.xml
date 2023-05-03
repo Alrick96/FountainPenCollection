@@ -8,6 +8,7 @@
 
     <TextView
         android:id="@+id/textView2"
+        style="@style/TitalFont"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -29,6 +30,7 @@
 
     <Button
         android:id="@+id/PasswordButton"
+        style="@style/ButtionFont"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"

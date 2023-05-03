@@ -30,18 +30,21 @@
 
             <TextView
                 android:id="@+id/PenNameDTextView"
+                style="@style/mainTextFont"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="TextView" />
 
             <TextView
                 android:id="@+id/CompanyDTextView"
+                style="@style/mainTextFont"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="TextView" />
 
             <TextView
                 android:id="@+id/PenYearDTextView"
+                style="@style/mainTextFont"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="TextView" />
@@ -56,108 +59,126 @@
 
             <TextView
                 android:id="@+id/DescriptionDTextView"
+                style="@style/mainTextFont"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="TextView" />
 
             <TextView
                 android:id="@+id/BodyMateralDTextView"
+                style="@style/mainTextFont"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="TextView" />
 
             <TextView
                 android:id="@+id/ColorDTextView"
+                style="@style/mainTextFont"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="TextView" />
 
             <TextView
                 android:id="@+id/NibColorDTextView"
+                style="@style/mainTextFont"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="TextView" />
 
             <TextView
                 android:id="@+id/NibMaterialDTextView"
+                style="@style/mainTextFont"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="TextView" />
 
             <TextView
                 android:id="@+id/DiameterBodyDTextView"
+                style="@style/mainTextFont"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="TextView" />
 
             <TextView
                 android:id="@+id/DiameterCapWOClipDTextView"
+                style="@style/mainTextFont"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="TextView" />
 
             <TextView
                 android:id="@+id/DiameterCapWClipDTextView"
+                style="@style/mainTextFont"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="TextView" />
 
             <TextView
                 android:id="@+id/DiameterGripDTextView"
+                style="@style/mainTextFont"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="TextView" />
 
             <TextView
                 android:id="@+id/LengthBodyDTextView"
+                style="@style/mainTextFont"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="TextView" />
 
             <TextView
                 android:id="@+id/LengthCapDTextView"
+                style="@style/mainTextFont"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="TextView" />
 
             <TextView
                 android:id="@+id/LengthNibDTextView"
+                style="@style/mainTextFont"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="TextView" />
 
             <TextView
                 android:id="@+id/LengthOveralCloseDTextView"
+                style="@style/mainTextFont"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="TextView" />
 
             <TextView
                 android:id="@+id/LengthOverallPostDTextView"
+                style="@style/mainTextFont"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="TextView" />
 
             <TextView
                 android:id="@+id/WeightBodyDTextView"
+                style="@style/mainTextFont"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="TextView" />
 
             <TextView
                 android:id="@+id/WeightCapDTextView"
+                style="@style/mainTextFont"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="TextView" />
 
             <TextView
                 android:id="@+id/WeightOverallDTextView"
+                style="@style/mainTextFont"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="TextView" />
 
             <Switch
                 android:id="@+id/FavoneDSwitch"
+                style="@style/SwitchFont"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Switch" />
@@ -167,6 +188,7 @@
 
     <TextView
         android:id="@+id/PenDetalTextView"
+        style="@style/TitalFont"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
