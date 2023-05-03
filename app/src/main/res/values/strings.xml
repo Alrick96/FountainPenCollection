@@ -17,4 +17,5 @@
     <string name="YearSortButtion">Year</string>
     <string name="RatingSortButtion">Rating</string>
     <string name="SortbyTextView">Sort by</string>
+    <string name="PenNameDTextView">Pen Name</string>
 </resources>
