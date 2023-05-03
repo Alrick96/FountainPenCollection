@@ -3,12 +3,16 @@ package com.example.fountainpencollection
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Switch
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatDelegate
 
 class AppSettingsMenu : AppCompatActivity() {
+    lateinit var SwitchMode:TextView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_app_settings_menu)
+
+        SwitchMode = findViewById<TextView>(R.id.ModeTextView)
 
         val themSwitch=findViewById<Switch>(R.id.ThemChangeSwitch)
 
@@ -16,11 +20,9 @@ class AppSettingsMenu : AppCompatActivity() {
 
             if(themSwitch.isChecked){
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-                themSwitch.text = "Disable dark mode"
             }
             else{
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-                themSwitch.text = "Enable dark mode"
             }
         }
 

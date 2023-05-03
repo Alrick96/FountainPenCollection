@@ -20,4 +20,7 @@
     <string name="PenNameDTextView">Pen Name</string>
     <string name="NewPassord">New Password</string>
     <string name="FountainPenCollectionTitle">The Fountain Pen Collection App</string>
+    <string name="FontSizeChangeTextView">Font Change</string>
+    <string name="EnterButton">Enter</string>
+    <string name="ThemChange">Theme change</string>
 </resources>
