@@ -7,24 +7,31 @@ import android.os.Bundle
 import android.preference.Preference
 import android.preference.PreferenceManager
 import android.util.Log
+import android.util.TypedValue
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.FirebaseFirestore
 import org.checkerframework.common.returnsreceiver.qual.This
+
+
 
 class MainPenGallery : AppCompatActivity() {
 
     private lateinit var PenRecyclerView: RecyclerView
     private lateinit var PenData:ArrayList<Pens>
     private lateinit var PenAdapter: PenAdapter
+    private lateinit var PenTitle:TextView
 
     private lateinit var db : FirebaseFirestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_pen_gallery)
+
+        PenTitle = findViewById(R.id.appTitleText)
 
         // recyclerView set up
         PenRecyclerView = findViewById<RecyclerView>(R.id.PenRecyclerView)
@@ -46,6 +53,8 @@ class MainPenGallery : AppCompatActivity() {
         editor.putFloat("RatingSort",0f)
         editor.putFloat("Fav",0f)
         editor.apply()
+
+
     }
 
 
@@ -106,8 +115,14 @@ class MainPenGallery : AppCompatActivity() {
     }
 
     fun loadFromdb() {
+
+
         PenData.clear()
         val sp = PreferenceManager.getDefaultSharedPreferences(this@MainPenGallery)
+
+        val TextSizeTP = sp.getFloat("TextSize",1.0f)
+        PenTitle.setTextSize(TypedValue.COMPLEX_UNIT_SP,18.0f * TextSizeTP)
+
         val FavState = sp.getFloat("Fav", 0f)
 
         //calling the sorts

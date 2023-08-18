@@ -9,6 +9,8 @@
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -23,8 +25,8 @@
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/imageView6"
-                android:layout_width="300dp"
+                android:id="@+id/PenDataImageView"
+                android:layout_width="match_parent"
                 android:layout_height="168dp"
                 app:srcCompat="@drawable/penicon" />
 
@@ -181,7 +183,13 @@
                 style="@style/SwitchFont"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Switch" />
+                android:text="@string/FavoriteSwitch" />
+
+            <Button
+                android:id="@+id/ModelButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Button" />
 
         </LinearLayout>
     </ScrollView>

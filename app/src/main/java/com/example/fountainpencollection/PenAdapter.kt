@@ -2,6 +2,7 @@ package com.example.fountainpencollection
 
 import android.content.Context
 import android.content.Intent
+import android.preference.PreferenceManager
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -20,6 +21,7 @@ class PenAdapter (private var PenList:List<Pens>)
 
     inner class PenViewHolder (itemView: View):RecyclerView.ViewHolder(itemView)
     {
+
             val PenNameTextView: TextView = itemView.findViewById(R.id.PenNameTextView)
             val CompanyNameTextView: TextView = itemView.findViewById(R.id.CompanyNameTextView)
             val PenYearTextView: TextView = itemView.findViewById(R.id.PenYearTextView)
@@ -69,12 +71,10 @@ class PenAdapter (private var PenList:List<Pens>)
         val PenYear = PenList[position].getPenYear()
         val PenRating = PenList[position].getRating().toFloat()
 
-
         holder.PenNameTextView.text = PenName
         holder.CompanyNameTextView.text = CompanyName
-        holder.PenYearTextView.text = PenYear.toString()
+        holder.PenYearTextView.text = String.format("%.0f",PenYear)
         holder.PenRating.rating = PenRating
-
 
     }
 

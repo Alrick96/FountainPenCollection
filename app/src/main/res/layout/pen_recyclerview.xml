@@ -44,6 +44,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
+        android:isIndicator="true"
         android:max="5"
         android:numStars="5"
         android:stepSize=".1"

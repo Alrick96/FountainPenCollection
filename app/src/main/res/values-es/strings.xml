@@ -1,8 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">FountainPenCollection</string>
-    <string name="text_username">Username</string>
-    <string name="text_Password">Password</string>
-    <string name="buttion_login">LOGIN</string>
+    <string name="text_username">UsernameEs</string>
+    <string name="text_Password">PasswordEs</string>
+    <string name="buttion_login">LOGINES</string>
     <string name="loginFail">Sorry your credentials are incorrect please try again.</string>
     <string name="EnterButtion">Enter</string>
 
@@ -20,7 +21,7 @@
     <string name="SortbyTextView">Sort by</string>
     <string name="PenNameDTextView">Pen Name</string>
     <string name="NewPassord">New Password</string>
-    <string name="FountainPenCollectionTitle">The Fountain Pen Collection App</string>
+    <string name="FountainPenCollectionTitle">La aplicación de la colección de plumas estilográficas</string>
     <string name="FontSizeChangeTextView">Font Change</string>
     <string name="EnterButton">Enter</string>
     <string name="ThemChange">Theme change</string>
